@@ -46,7 +46,9 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
     /**
-     * 
+     * Register new User.
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
