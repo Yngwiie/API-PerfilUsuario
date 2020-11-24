@@ -11,3 +11,5 @@ Se debe tener instalado composer y laravel 8.
 Ahora, para ejecutar la aplicación simplemente dentro del directorio en la linea de comandos se debe escribir "php artisan serve"
 
 Documentación de POSTMAN, pruebas de la API: https://documenter.getpostman.com/view/7919584/TVewYimb
+
+MockAPI, usuarios registrados(ultimos datos despues de las actualizaciones): https://5fbbe94dc09c200016d4143f.mockapi.io/api/auth/users
