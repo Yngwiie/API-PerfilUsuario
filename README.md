@@ -9,3 +9,5 @@ Se debe tener instalado composer y laravel 8.
 5) Por ultimo en la linea de comandos dentro del directorio, se debe escribir "php artisan key:generate".
 
 Ahora, para ejecutar la aplicación simplemente dentro del directorio en la linea de comandos se debe escribir "php artisan serve"
+
+Documentación de POSTMAN, pruebas de la API: https://documenter.getpostman.com/view/7919584/TVewYimb
