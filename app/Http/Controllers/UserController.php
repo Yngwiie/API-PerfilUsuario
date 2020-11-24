@@ -25,44 +25,46 @@ class UserController extends Controller
     {   
         return response()->json(auth()->user());
     }
-
+    /**
+     * Update user data.
+     */
     public function updateProfile(Request $request)
     {
         $user = auth()->user();
-        //Si no cambió el email, no se valida.
+        //if the email dont change, dont validate it.
         if($user->email == $request->email)
         {
             $validated_data = $request->validate(
                 [
                     'name' => 'required|string|min:2|max:100',
                     'old_password' => 'required|string',
-                    'password' => 'required|confirmed|string|min:8|different:old',
+                    'password' => 'required|confirmed|string|min:8|different:old_password',
                 ]
             );
         }
-        else//caso contrario, si valido el email.
+        else//otherwise, validate the email.
         {
             $validated_data = $request->validate(
                 [
                     'name' => 'required|string|min:2|max:100',
                     'email' => 'required|email|unique:users',
                     'old_password' => 'required|string',
-                    'password' => 'required|confirmed|string|min:8|different:old',
+                    'password' => 'required|confirmed|string|min:8|different:old_password',
                 ]
             );
         }
-        //corroborar que contraseña antigua, coincida con la ingresada, para poder modificarla.
-        if(Hash::check($request->old_password,$user->password))
+        //check that the old password is the same as the one entered, in order to change it.
+        if(!Hash::check($request->old_password,$user->password))
         {
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
-            return response()->json(['message' => '¡Usuario Actualizado con éxito!','user' => $user]);
+            return response()->json(['message' => '¡User updated successfully!','user' => $user]);
         }
         else
         {   
-            return response()->json(['error' => '¡Contrasena Antigua erronea!'],422);
+            return response()->json(['error' => '¡Wrong old password!'],422);
         }
         
 
