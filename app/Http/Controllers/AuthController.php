@@ -74,15 +74,6 @@ class AuthController extends Controller
         return response()->json(['message' => '¡User created sucessfully!','user' => $user]);
 
     }
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function profile()
-    {   
-        return response()->json(auth()->user());
-    }
     
     /**
      * Get the token array structure.
